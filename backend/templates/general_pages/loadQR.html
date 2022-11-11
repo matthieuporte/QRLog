@@ -1,0 +1,30 @@
+{% extends "shared/base.html" %}
+
+
+{% block title %} 
+  <title>QR loader</title>
+{% endblock %} 
+
+{% block content %} 
+  <div class="container">
+    <h1 class="titre">Chocolats de Noël</h1>
+    <p class="texte">Bonjour <span>Nicolas Flammel, voici le code qr à faire scanner pour recuperer votre réservation.</span></p>
+  </div>
+  <div id="qrcode"></div>
+{% endblock %} 
+
+{% block scripts %}
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script>
+var largeurQR = 400;
+  if (Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) < 1000){
+    largeurQR = 800;
+  }
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+  text: "https://matthieuporte.github.io",
+  width: largeurQR,
+  height:largeurQR
+});
+
+</script>
+{% endblock %}
