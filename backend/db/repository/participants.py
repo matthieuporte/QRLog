@@ -1,19 +1,21 @@
 from sqlalchemy.orm import Session
 
-from schemas.schemas import ParticipantsCreate
+from schemas.schemas import ParticipantsCreate, ParticipantRead
 from db.models.models import Participants
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
 def create_new_participant(participant:ParticipantsCreate,db:Session):
-    participant = Participants(username=participant.username,
-        email = participant.email,
-        claimedTicket=False)
+    participant = Participants(
+        username = participant.username,
+        email = participant.email
+        #event joint
+        )
     db.add(participant)
     db.commit()
     db.refresh(participant)
     return participant
-                
+
                                
     # id = Column(Integer, primary_key=True, index=True)
     # username = Column(String,unique=True,nullable=False)

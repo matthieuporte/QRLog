@@ -21,10 +21,11 @@ var largeurQR = 400;
     largeurQR = 800;
   }
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-  text: "https://matthieuporte.github.io",
+  text: "http://127.0.0.1/delivery/{{uuid}}",
   width: largeurQR,
   height:largeurQR
 });
 
 </script>
+{{uuid}}
 {% endblock %}
