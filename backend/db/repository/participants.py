@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 
-from schemas.schemas import ParticipantsCreate, ParticipantRead
+from schemas.schemas import ParticipantCreate, ParticipantsRead
 from db.models.models import Participants
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-def create_new_participant(participant:ParticipantsCreate,db:Session):
+def create_new_participant(participant:ParticipantCreate,db:Session):
     participant = Participants(
         username = participant.username,
         email = participant.email

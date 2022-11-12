@@ -4,7 +4,7 @@ from typing import List
 class EventCreate(BaseModel):
     name: str
 
-class ParticipantsCreate(BaseModel):
+class ParticipantCreate(BaseModel):
     username: str
     email: EmailStr
 
@@ -16,3 +16,10 @@ class ParticipantRead(BaseModel):
 
 class ParticipantsRead(BaseModel):
     participant: List[ParticipantRead]
+
+
+class EventRead(BaseModel):
+    name:str
+
+class EventsRead(BaseModel):
+    participant: List[EventRead]

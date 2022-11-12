@@ -1,22 +1,21 @@
 from fastapi import APIRouter, HTTPException, Depends, status, Response
 from sqlalchemy.orm import Session
-from typing import List
 
-from schemas.schemas import ParticipantsCreate, ParticipantsRead
+from schemas.schemas import ParticipantCreate, ParticipantsRead
 from db.models import models
 from db.session import get_db
 from db.repository.participants import create_new_participant
 
-router = APIRouter()
+participants_router = APIRouter()
 
 
 # /!\ affiche les Id 
-@router.get("/")
+@participants_router.get("/")
 def get_participants(db: Session = Depends(get_db)):
     participants = db.query(models.Participants).all()
     return {"participants":participants}
 
-@router.get("/{uuid}")
+@participants_router.get("/{uuid}")
 def get_participant(uuid: str, db: Session = Depends(get_db)):
     participant = db.query(models.Participants).filter(models.Participants.uuid == uuid).first()
     if not participant:
@@ -24,7 +23,7 @@ def get_participant(uuid: str, db: Session = Depends(get_db)):
                             detail="Aucun participant trouvé avec cet uuid")
     return {"username":participant.username,"email":participant.email}
 
-@router.patch("/{uuid}/claim")
+@participants_router.patch("/{uuid}/claim")
 def patch_participant(uuid: str, db: Session = Depends(get_db)):
     participant = db.query(models.Participants).filter(models.Participants.uuid == uuid, models.Participants.claimedTicket == False).first()
     if not participant:
@@ -35,7 +34,7 @@ def patch_participant(uuid: str, db: Session = Depends(get_db)):
     return participant
 
 
-@router.post("/")
-def post_participant(participant: ParticipantsCreate, db: Session = Depends(get_db)):
+@participants_router.post("/")
+def post_participant(participant: ParticipantCreate, db: Session = Depends(get_db)):
     participant = create_new_participant(participant=participant,db=db)
     return participant
