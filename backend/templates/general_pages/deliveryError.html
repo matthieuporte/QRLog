@@ -7,8 +7,8 @@
 
 {% block content %} 
   <div class="container">
-    <h1 class="titre">Chocolats de Noël</h1>
-    <p class="texte error">La réservation de <span>{{name}}</span> a deja été retirée.</p>
+    <h1 class="titre">{{eventname}}</h1>
+    <p class="texte error">{{message}}</p>
   </div>
   <div id="qrcode"></div>
 {% endblock %} 

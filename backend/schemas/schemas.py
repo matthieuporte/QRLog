@@ -7,12 +7,14 @@ class EventCreate(BaseModel):
 class ParticipantCreate(BaseModel):
     username: str
     email: EmailStr
+    eventJoined: int
 
 class ParticipantRead(BaseModel):
     username:str
     email: EmailStr
     uuid: str
     claimedTicket:bool
+    eventJoined: int
 
 class ParticipantsRead(BaseModel):
     participant: List[ParticipantRead]

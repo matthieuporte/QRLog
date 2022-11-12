@@ -7,8 +7,8 @@
 
 {% block content %} 
   <div class="container">
-    <h1 class="titre">Chocolats de Noël</h1>
-    <p class="texte">Bonjour <span>Nicolas Flammel, voici le code qr à faire scanner pour recuperer votre réservation.</span></p>
+    <h1 class="titre">{{eventname}}</h1>
+    <p class="texte">Bonjour <span>{{username}}</span>, voici le code qr à faire scanner pour recuperer votre réservation.</p>
   </div>
   <div id="qrcode"></div>
 {% endblock %} 
@@ -27,5 +27,4 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
 
 </script>
-{{uuid}}
 {% endblock %}

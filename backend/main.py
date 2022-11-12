@@ -26,12 +26,9 @@ def start_application():
 app = start_application()
 
 
-# route get list event
-# route post crée event
 # bouton vert qui patch (formulaire)
 # route delivery reset
 # csv to db (bulk post)
-# event nullable = False
-# link event to participant
-# route get pour tout les participants qui ne montre pas l'id
-# corriger les general_pages_routes
+# route get pour tout les participants, la route ne montre pas l'id
+# delete participant
+# delete event

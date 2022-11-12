@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from schemas.schemas import ParticipantCreate, ParticipantsRead
 from db.models import models
 from db.session import get_db
-from db.repository.participants import create_new_participant
+from db.repository.participants import create_new_participant, delete_participant_with_uuid
 
 participants_router = APIRouter()
 
@@ -21,7 +21,10 @@ def get_participant(uuid: str, db: Session = Depends(get_db)):
     if not participant:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Aucun participant trouvé avec cet uuid")
-    return {"username":participant.username,"email":participant.email}
+    return {"username":participant.username,
+            "email":participant.email,
+            "eventJoined":participant.eventJoined,
+            "claimedTicket":participant.claimedTicket}
 
 @participants_router.patch("/{uuid}/claim")
 def patch_participant(uuid: str, db: Session = Depends(get_db)):
@@ -32,6 +35,14 @@ def patch_participant(uuid: str, db: Session = Depends(get_db)):
     participant.claimedTicket = True
     db.commit()
     return participant
+
+@participants_router.delete("/{uuid}/delete")
+def delete_participant(uuid: str, db: Session = Depends(get_db)):
+    message = delete_participant_with_uuid(uuid=uuid,db=db)
+    if not message:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"Aucun participant trouvé avec cet uuid : {uuid}")
+    return {"msg":"Participant supprimé."}
 
 
 @participants_router.post("/")
