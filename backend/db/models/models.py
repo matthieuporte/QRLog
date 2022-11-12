@@ -12,7 +12,7 @@ class Events(Base):
 class Participants(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String,nullable=False)
-    email = Column(String,nullable=False,unique=True)
+    email = Column(String,nullable=False)
     eventJoined =  Column(Integer,ForeignKey("events.id"),nullable=False)
     uuid = Column(UUID(as_uuid=True), default=uuid.uuid4,index=True)
     claimedTicket = Column(Boolean(),default=False)

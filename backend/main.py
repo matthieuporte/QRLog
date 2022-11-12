@@ -27,8 +27,9 @@ app = start_application()
 
 
 # bouton vert qui patch (formulaire)
-# route delivery reset
-# csv to db (bulk post)
-# route get pour tout les participants, la route ne montre pas l'id
-# delete participant
-# delete event
+# emails: how to call api with fastapi 
+
+# github
+# blackjack python
+# mandelbrot
+# game of life
