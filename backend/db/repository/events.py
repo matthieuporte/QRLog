@@ -1,19 +1,18 @@
 from sqlalchemy.orm import Session
 
-from schemas.schemas import EventCreate, ParticipantRead
-from db.models.models import Events
+from backend.db.models.models import Events
+from backend.schemas.schemas import EventCreate
 
-def create_new_event(event:EventCreate,db:Session):
-    event = Events(
-        name = event.name
-        )
+
+def create_new_event(event: EventCreate, db: Session):
+    event = Events(name=event.name)
     db.add(event)
     db.commit()
     db.refresh(event)
     return event
 
 
-def delete_event_with_id(id: int,db: Session):
+def delete_event_with_id(id: int, db: Session):
     existing_event = db.query(Events).filter(Events.id == id)
     if not existing_event.first():
         return 0

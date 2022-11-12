@@ -1,29 +1,29 @@
 from sqlalchemy.orm import Session
 
-from schemas.schemas import ParticipantCreate, ParticipantsRead
-from db.models.models import Participants
-from sqlalchemy.dialects.postgresql import UUID
-import uuid
+from backend.db.models.models import Participants
+from backend.schemas.schemas import ParticipantCreate
 
-def create_new_participant(participant:ParticipantCreate,db:Session):
+
+def create_new_participant(participant: ParticipantCreate, db: Session):
     participant = Participants(
-        username = participant.username,
-        email = participant.email,
-        eventJoined = participant.eventJoined
-        )
+        username=participant.username,
+        email=participant.email,
+        eventJoined=participant.eventJoined,
+    )
     db.add(participant)
     db.commit()
     db.refresh(participant)
     return participant
 
-def delete_participant_with_uuid(uuid: str,db: Session):
+
+def delete_participant_with_uuid(uuid: str, db: Session):
     existing_participant = db.query(Participants).filter(Participants.uuid == uuid)
     if not existing_participant.first():
         return 0
     existing_participant.delete(synchronize_session=False)
     db.commit()
     return 1
-                               
+
     # id = Column(Integer, primary_key=True, index=True)
     # username = Column(String,unique=True,nullable=False)
     # email = Column(String,nullable=False,unique=True)

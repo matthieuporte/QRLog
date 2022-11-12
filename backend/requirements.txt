@@ -6,13 +6,16 @@ jinja2
 
 
 #for static files
-aiofiles
+python-multipart
 
-#for database   
-sqlalchemy         
+#for database
+sqlalchemy
 psycopg2
 
-#for loading environment variables 
+# database change management
+alembic
+
+#for loading environment variables
 python-dotenv
 
 #for email validation

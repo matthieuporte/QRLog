@@ -1,32 +1,27 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from core.config import settings
-from apis.base import api_router
-from db.session import engine
-from db.base import Base
+
+from backend.apis.base import api_router
+from backend.core.config import settings
 
 
 def include_router(app):
-	app.include_router(api_router)
+    app.include_router(api_router)
 
-def configure_static(app): 
-    app.mount("/static", StaticFiles(directory="static"), name="static")
+
+def configure_static(app):
+    app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 
 
 def start_application():
-    app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
+    app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
     include_router(app)
     configure_static(app)
 
-    return app 
+    return app
 
 
 app = start_application()
 
 
-# emails: how to call api with fastapi 
-
-# github
-# blackjack python
-# mandelbrot
-# game of life
+# emails: how to call api with fastapi
