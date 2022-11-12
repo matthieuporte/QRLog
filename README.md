@@ -1,3 +1,25 @@
+## Alembic
+
+### init migrations
+
+```sh
+alembic init backend/db/migrations
+```
+
+where `backend/db/migrations` is the directory to save migrations files
+
+### generate migrations file
+
+```sh
+alembic revision --autogenerate -m "comment to update"
+```
+
+### apply migrations
+
+```sh
+alembic upgrade head
+```
+
 ## Linters
 
 ### black : reindent code
