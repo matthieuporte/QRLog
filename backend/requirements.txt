@@ -17,3 +17,8 @@ python-dotenv
 
 #for email validation
 pydantic[email]
+
+# for dev purpose, to be split with help of poetry wonderful magical world
+black
+isort
+flake8
