@@ -26,7 +26,6 @@ def start_application():
 app = start_application()
 
 
-# bouton vert qui patch (formulaire)
 # emails: how to call api with fastapi 
 
 # github

@@ -7,12 +7,13 @@
 
 {% block content %} 
   <div class="container">
-    <h1 class="titre">Chocolats de Noël</h1>
+    <h1 class="titre">{{eventname}}</h1>
     <p class="texte">Confirmer la bonne reception de <span>{{username}}</span> ?</p>
   </div>
   <div class="btns">
-    <form method="post">
-      <button class="btn yes"><i class="gg-check-r"></i></button>
+    <form method="post" action="http://127.0.0.1:8000/participants/claim">
+      <input name="uuid" value="{{uuid}}" type="hidden">
+      <button type="submit" class="btn yes"><i class="gg-check-r"></i></button>
     </form>
     <div class="btn no" onclick="window.open('', '_self', ''); window.close();"><i class="gg-close-r"></i></div>
   </div>
