@@ -4,8 +4,10 @@ uvicorn
 #for template
 jinja2
 
-
 #for static files
+aiofiles
+
+# for forms
 python-multipart
 
 #for database
