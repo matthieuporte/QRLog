@@ -10,7 +10,7 @@ load_dotenv()
 
 class Settings:
     PROJECT_NAME: str = "QRLog"
-    PROJECT_VERSION: str = "1.0.0"
+    PROJECT_VERSION: str = "1.2.1"
 
     # POSTGRES_USER: str = os.getenv("POSTGRES_USER")
     # POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")

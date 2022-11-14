@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from backend.db.models import models
 from backend.db.session import get_db
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="backend/templates")
 general_pages_router = APIRouter()
 
 

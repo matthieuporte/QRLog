@@ -30,7 +30,7 @@ def get_participant(uuid: str, db: Session = Depends(get_db)):
         #                     detail="Aucun participant trouvé avec cet uuid")
     return {
         "username": participant.username,
-        "email": participant.email,
+        #"email": participant.email,
         "eventJoined": participant.eventJoined,
         "claimedTicket": participant.claimedTicket,
     }
